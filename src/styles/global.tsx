@@ -8,7 +8,6 @@ const reset = css`
   applet,
   object,
   iframe,
-  h1,
   h2,
   h3,
   h4,
@@ -87,6 +86,22 @@ const reset = css`
     border: 0;
     font-size: 100%;
     font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+  }
+  h1 {
+    font-family: yg-jalnan, sans-serif;
+    @font-face {
+      font-family: "yg-jalnan";
+      src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
+        format("woff");
+      font-weight: normal;
+      font-style: normal;
+    }
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
     vertical-align: baseline;
     box-sizing: border-box;
   }
