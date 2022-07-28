@@ -1,7 +1,9 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { Global, css } from "@emotion/react";
+import { Global, css, ThemeProvider } from "@emotion/react";
 import reset from "../styles/global";
+import Layout from "../components/common/layout/Layout";
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -14,7 +16,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           ${reset}
         `}
       />
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 }

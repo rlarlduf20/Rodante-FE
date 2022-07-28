@@ -1,11 +1,11 @@
-import { Button } from "@mui/material";
+import { MainContainer } from "../styles/mainpage";
+import NoticeBoard from "../components/mainpage/NoticeBoard";
 
 const Home = () => {
   return (
-    <div>
-      <h1>hello</h1>
-      <Button>안녕</Button>
-    </div>
+    <MainContainer>
+      <NoticeBoard />
+    </MainContainer>
   );
 };
 
