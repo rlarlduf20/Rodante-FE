@@ -1,14 +1,9 @@
-import {
-  NoticeBoardBox,
-  NoticeBoardInnerBox,
-  NoticeSection,
-} from "../../styles/mainpage/notice/noticeSection";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination, Autoplay, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import Link from "next/link";
-import NoticeBoardItem from "../../styles/mainpage/notice/noticeSectionItem";
+import NoticeBoardItem from "./noticeSectionItem";
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 

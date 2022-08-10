@@ -1,4 +1,7 @@
-import { NoticeBoardBox, NoticeBoardInnerBox } from "./noticeSection";
+import {
+  NoticeBoardBox,
+  NoticeBoardInnerBox,
+} from "../../../styles/mainpage/noticeSection";
 import Link from "next/link";
 
 interface NoticeType {
