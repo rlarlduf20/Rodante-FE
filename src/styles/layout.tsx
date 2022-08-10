@@ -7,6 +7,7 @@ export const HeaderDiv = styled.header`
   top: 0;
   left: 0;
   height: 84px;
+  z-index: 10;
 `;
 
 export const NavbarDiv = styled.nav<{ search: boolean }>`
@@ -145,6 +146,7 @@ export const SideBox = styled(Box)`
 `;
 
 export const MainDiv = styled.main`
+  width: 100%;
   min-height: calc(100vh - 133px);
 `;
 
