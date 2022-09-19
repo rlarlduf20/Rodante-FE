@@ -2,7 +2,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { Global, css, ThemeProvider } from "@emotion/react";
 import reset from "../styles/global";
-import Layout from "../components/common/layout/Layout";
+import Layout from "../components/common/layout";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

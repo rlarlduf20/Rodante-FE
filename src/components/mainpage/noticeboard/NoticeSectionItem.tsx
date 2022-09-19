@@ -1,16 +1,19 @@
-import { NoticeBoardBox, NoticeBoardInnerBox } from "./noticeSection";
+import {
+  NoticeBoardBox,
+  NoticeBoardInnerBox,
+} from "../../../styles/mainpage/noticeSection";
 import Link from "next/link";
 
 interface NoticeType {
   title: string;
   content: string;
-  background: string;
   link: string;
+  imgUri: string;
 }
 
-const NoticeBoardItem = ({ title, content, background, link }: NoticeType) => {
+const NoticeBoardItem = ({ title, content, link, imgUri }: NoticeType) => {
   return (
-    <NoticeBoardBox background={background}>
+    <NoticeBoardBox imgUri={imgUri}>
       <NoticeBoardInnerBox>
         <div className="noticeBox">
           <div className="notice_title">

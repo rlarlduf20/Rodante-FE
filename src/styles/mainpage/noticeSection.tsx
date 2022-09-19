@@ -5,10 +5,14 @@ export const NoticeSection = styled.section`
   height: 42vw;
 `;
 
-export const NoticeBoardBox = styled.div<{ background: string }>`
+export const NoticeBoardBox = styled.div<{
+  imgUri: string;
+}>`
   width: 100vw;
   height: 42vw;
-  background: ${(props) => props.background};
+  background-image: url(${(props) => props.imgUri});
+  background-size: cover;
+  background-repeat: no-repeat;
 `;
 
 export const NoticeBoardInnerBox = styled.div`
