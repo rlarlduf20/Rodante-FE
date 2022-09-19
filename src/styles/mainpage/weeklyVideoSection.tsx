@@ -10,13 +10,27 @@ export const VideoInnerContainer = styled.div`
   margin: 0 auto;
   display: flex;
   gap: 177px;
+  @media (max-width: 700px) {
+    flex-direction: column;
+    gap: 0;
+  }
+  margin-bottom: 100px;
 `;
 
 export const WeeklyButtonContainer = styled.div`
   margin-top: 55px;
+  @media (max-width: 700px) {
+    display: flex;
+  }
 `;
 
 export const StyledLabel = styled.label`
+  @media (max-width: 700px) {
+    margin-right: 5px;
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
   display: flex;
   font-size: 20px;
   justify-content: center;
@@ -41,13 +55,30 @@ export const StyledRadio = styled.input`
 
 export const VideoBox = styled.div`
   margin-top: 55px;
+  max-width: calc(100vw - 271px);
+  display: flex;
+  @media (max-width: 1058px) {
+    justify-content: center;
+  }
+  @media (max-width: 700px) {
+    max-width: 100vw;
+  }
+  flex-wrap: wrap;
+  gap: 18px;
 `;
 
 export const StyledVideoCard = styled.div<{ imgUri: string }>`
   width: 360px;
   height: 277px;
+  @media (max-width: 700px) {
+    width: 240px;
+    height: 197px;
+  }
   .cardImage {
     width: 100%;
+    @media (max-width: 700px) {
+      height: 160px;
+    }
     height: 240px;
     border: 1px solid black;
     border-radius: 20px;

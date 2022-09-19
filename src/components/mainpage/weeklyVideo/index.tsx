@@ -12,6 +12,41 @@ const dummyVideo = [
     title: "에이틴",
     imgUri: "/images/18img.jpeg",
   },
+  {
+    dOfw: "mon",
+    title: "에이틴",
+    imgUri: "/images/18img.jpeg",
+  },
+  {
+    dOfw: "mon",
+    title: "에이틴",
+    imgUri: "/images/18img.jpeg",
+  },
+  {
+    dOfw: "mon",
+    title: "에이틴",
+    imgUri: "/images/18img.jpeg",
+  },
+  {
+    dOfw: "mon",
+    title: "에이틴",
+    imgUri: "/images/18img.jpeg",
+  },
+  {
+    dOfw: "mon",
+    title: "에이틴",
+    imgUri: "/images/18img.jpeg",
+  },
+  {
+    dOfw: "mon",
+    title: "에이틴",
+    imgUri: "/images/18img.jpeg",
+  },
+  {
+    dOfw: "tue",
+    title: "연애플레이리스트",
+    imgUri: "/images/playlist.jpeg",
+  },
 ];
 
 const VideoSection = () => {
