@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination, Autoplay, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
-import NoticeBoardItem from "./noticeSectionItem";
+import NoticeBoardItem from "./NoticeSectionItem";
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 

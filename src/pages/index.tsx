@@ -1,5 +1,5 @@
-import NoticeBoard from "../components/mainpage/notiveboard/NoticeBoard";
-import VideoSection from "../components/mainpage/weeklyVideo/VideoSection";
+import NoticeBoard from "../components/mainpage/noticeboard";
+import VideoSection from "../components/mainpage/weeklyVideo";
 
 const Home = () => {
   return (

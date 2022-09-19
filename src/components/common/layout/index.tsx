@@ -1,5 +1,5 @@
-import Header from "./header/Header";
-import Footer from "./footer/Footer";
+import Header from "./header";
+import Footer from "./footer";
 import { MainDiv } from "../../../styles/layout";
 import React from "react";
 
