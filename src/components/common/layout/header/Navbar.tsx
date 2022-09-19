@@ -32,7 +32,7 @@ const Navbar = () => {
       <NavbarDiv search={search}>
         <Link href="/">
           <a>
-            <h1 className="logo">Rodante</h1>
+            <h1 className="logo">Rodanthe</h1>
           </a>
         </Link>
         <div className="navbarItem">

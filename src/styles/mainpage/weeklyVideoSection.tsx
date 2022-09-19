@@ -42,3 +42,22 @@ export const StyledRadio = styled.input`
 export const VideoBox = styled.div`
   margin-top: 55px;
 `;
+
+export const StyledVideoCard = styled.div<{ imgUri: string }>`
+  width: 360px;
+  height: 277px;
+  .cardImage {
+    width: 100%;
+    height: 240px;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-bottom: 17px;
+    background-size: cover;
+    background-image: url(${(props) => props.imgUri});
+  }
+  .cardTitle {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+  }
+`;

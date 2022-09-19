@@ -2,7 +2,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination, Autoplay, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
-import Link from "next/link";
 import NoticeBoardItem from "./noticeSectionItem";
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
@@ -11,26 +10,28 @@ const f_board = {
   title: "멤버십 안내",
   content: "멤버십 가입 후 매달 무료 이용하세요.",
   background: "#b9cffa",
+  imgUri: "/images/membership.png",
   link: "#",
 };
 const s_board = {
   title: "이상한 변호사 우영우",
   content: "멤버십 가입 후 매달 무료 이용하세요.",
   background: "lightpink",
+  imgUri: "/images/noticeImg1.jpeg",
   link: "#",
 };
 const t_board = {
   title: "탑건:메버릭",
   content: "멤버십 가입 후 매달 무료 이용하세요.",
   background: "lightgray",
+  imgUri: "/images/noticeImg2.jpeg",
   link: "#",
 };
 const NoticeBoard = () => {
   return (
     <Swiper
-      // spaceBetween={8}
       initialSlide={1}
-      // centeredSlides={true}
+      centeredSlides={true}
       autoplay={{ delay: 2000 }}
       slidesPerView={1}
       navigation
@@ -42,7 +43,7 @@ const NoticeBoard = () => {
         <NoticeBoardItem
           title={f_board.title}
           content={f_board.content}
-          background={f_board.background}
+          imgUri={f_board.imgUri}
           link={f_board.link}
         />
       </SwiperSlide>
@@ -50,7 +51,7 @@ const NoticeBoard = () => {
         <NoticeBoardItem
           title={s_board.title}
           content={s_board.content}
-          background={s_board.background}
+          imgUri={s_board.imgUri}
           link={s_board.link}
         />
       </SwiperSlide>
@@ -58,7 +59,7 @@ const NoticeBoard = () => {
         <NoticeBoardItem
           title={t_board.title}
           content={t_board.content}
-          background={t_board.background}
+          imgUri={t_board.imgUri}
           link={t_board.link}
         />
       </SwiperSlide>
