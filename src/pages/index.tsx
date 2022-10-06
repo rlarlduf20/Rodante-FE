@@ -1,7 +1,7 @@
 import NoticeBoard from "../components/mainpage/noticeboard";
 import VideoSection from "../components/mainpage/weeklyVideo";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
       <NoticeBoard />
@@ -10,4 +10,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

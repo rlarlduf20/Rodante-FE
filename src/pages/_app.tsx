@@ -3,8 +3,11 @@ import Head from "next/head";
 import { Global, css, ThemeProvider } from "@emotion/react";
 import reset from "../styles/global";
 import Layout from "../components/common/layout";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const route = useRouter().pathname;
+
   return (
     <>
       <Head>
@@ -16,9 +19,17 @@ function MyApp({ Component, pageProps }: AppProps) {
           ${reset}
         `}
       />
-      <Layout>
+      {route === "/signin" ? (
         <Component {...pageProps} />
-      </Layout>
+      ) : route === "/" ? (
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      ) : (
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      )}
     </>
   );
 }

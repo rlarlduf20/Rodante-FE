@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { HeaderDiv } from "../../../../styles/layout";
 import Navbar from "./Navbar";
+
 const Header = () => {
   const [ylocation, setYlocation] = useState(0);
   if (typeof window !== undefined) {

@@ -42,7 +42,7 @@ const Navbar = ({ ylocation }: NavbarType) => {
         </Link>
         <div className="navbarItem">
           <div className="video_register">
-            <Link href="#">
+            <Link href="/videoRegi">
               <a>
                 <h1>영상 등록</h1>
               </a>
@@ -65,7 +65,7 @@ const Navbar = ({ ylocation }: NavbarType) => {
           </div>
 
           <div className="signin">
-            <Link href="#">
+            <Link href="/signin">
               <a>
                 <h1>로그인/가입</h1>
               </a>
