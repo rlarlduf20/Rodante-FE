@@ -1,16 +1,20 @@
 import styled from "@emotion/styled";
 import Box from "@mui/material/Box";
 
-export const HeaderDiv = styled.header`
+export const HeaderDiv = styled.header<{ ylocation: number }>`
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
+  background: ${(props) => props.ylocation > 400 && "white"};
   height: 84px;
   z-index: 10;
 `;
 
-export const NavbarDiv = styled.nav<{ search: boolean }>`
+export const NavbarDiv = styled.nav<{
+  search: boolean;
+  ylocation: number;
+}>`
   max-width: calc(100vw - 100px);
   margin: 0 auto;
   height: 100%;
@@ -28,7 +32,7 @@ export const NavbarDiv = styled.nav<{ search: boolean }>`
     }
     display: flex;
     align-items: center;
-    color: white;
+    color: ${(props) => (props.ylocation > 400 ? "black" : "white")};
     .video_register {
       display: inline-block;
       margin-left: 50px;
@@ -78,7 +82,7 @@ export const NavbarDiv = styled.nav<{ search: boolean }>`
       }
     }
     .signin {
-      color: white;
+      color: ${(props) => (props.ylocation > 400 ? "black" : "white")};
       display: inline-block;
       @media (max-width: 800px) {
         display: none;

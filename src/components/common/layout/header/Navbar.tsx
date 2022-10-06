@@ -2,15 +2,20 @@ import { NavbarDiv } from "../../../../styles/layout";
 import Link from "next/link";
 import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import SideBlock from "./SideBlock";
 import Drawer from "@mui/material/Drawer";
 
-const Navbar = () => {
+interface NavbarType {
+  ylocation: number;
+}
+const Navbar = ({ ylocation }: NavbarType) => {
   const [search, setSearch] = useState(false);
   const [isHambar, setIsHambar] = useState(false);
+  const inputRef = useRef<any>();
   const onClickSearch = () => {
     setSearch((prev) => !prev);
+    inputRef.current.focus();
   };
   const onClickHambar = () => {
     setIsHambar((prev) => !prev);
@@ -29,7 +34,7 @@ const Navbar = () => {
     };
   return (
     <>
-      <NavbarDiv search={search}>
+      <NavbarDiv search={search} ylocation={ylocation}>
         <Link href="/">
           <a>
             <h1 className="logo">Rodanthe</h1>
@@ -37,7 +42,7 @@ const Navbar = () => {
         </Link>
         <div className="navbarItem">
           <div className="video_register">
-            <Link href="#">
+            <Link href="/videoRegi">
               <a>
                 <h1>영상 등록</h1>
               </a>
@@ -53,14 +58,14 @@ const Navbar = () => {
         </div>
         <div className="none"></div>
         <div className="etc">
-          <input placeholder="제목" className="input" />
+          <input placeholder="제목" className="input" ref={inputRef} />
 
           <div className="search" onClick={onClickSearch}>
             <SearchIcon />
           </div>
 
           <div className="signin">
-            <Link href="#">
+            <Link href="/signin">
               <a>
                 <h1>로그인/가입</h1>
               </a>

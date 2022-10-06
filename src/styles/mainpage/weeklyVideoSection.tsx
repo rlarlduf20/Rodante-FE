@@ -80,7 +80,6 @@ export const StyledVideoCard = styled.div<{ imgUri: string }>`
       height: 160px;
     }
     height: 240px;
-    border: 1px solid black;
     border-radius: 20px;
     margin-bottom: 17px;
     background-size: cover;
