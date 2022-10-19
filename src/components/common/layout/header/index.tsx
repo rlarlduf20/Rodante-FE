@@ -13,7 +13,7 @@ const Header = () => {
   }
   return (
     <HeaderDiv ylocation={ylocation}>
-      <Navbar ylocation={ylocation} />
+      <Navbar />
     </HeaderDiv>
   );
 };

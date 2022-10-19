@@ -13,7 +13,6 @@ export const HeaderDiv = styled.header<{ ylocation: number }>`
 
 export const NavbarDiv = styled.nav<{
   search: boolean;
-  ylocation: number;
 }>`
   max-width: calc(100vw - 100px);
   margin: 0 auto;
@@ -32,7 +31,7 @@ export const NavbarDiv = styled.nav<{
     }
     display: flex;
     align-items: center;
-    color: ${(props) => (props.ylocation > 400 ? "black" : "white")};
+    color: black;
     .video_register {
       display: inline-block;
       margin-left: 50px;
@@ -82,7 +81,7 @@ export const NavbarDiv = styled.nav<{
       }
     }
     .signin {
-      color: ${(props) => (props.ylocation > 400 ? "black" : "white")};
+      color: black;
       display: inline-block;
       @media (max-width: 800px) {
         display: none;

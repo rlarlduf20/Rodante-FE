@@ -21,10 +21,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       />
       {route === "/signin" ? (
         <Component {...pageProps} />
-      ) : route === "/" ? (
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
       ) : (
         <Layout>
           <Component {...pageProps} />

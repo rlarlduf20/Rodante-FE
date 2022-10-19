@@ -40,9 +40,6 @@ export const StyledSignInBox = styled.div`
     background-color: white;
     padding-top: 20px;
     position: relative;
-    &:hover {
-      border: 2px solid purple;
-    }
     .innerBtn {
       display: flex;
       font-size: 14px;
