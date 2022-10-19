@@ -6,10 +6,7 @@ import React, { useState, useRef } from "react";
 import SideBlock from "./SideBlock";
 import Drawer from "@mui/material/Drawer";
 
-interface NavbarType {
-  ylocation: number;
-}
-const Navbar = ({ ylocation }: NavbarType) => {
+const Navbar = () => {
   const [search, setSearch] = useState(false);
   const [isHambar, setIsHambar] = useState(false);
   const inputRef = useRef<any>();
@@ -34,7 +31,7 @@ const Navbar = ({ ylocation }: NavbarType) => {
     };
   return (
     <>
-      <NavbarDiv search={search} ylocation={ylocation}>
+      <NavbarDiv search={search}>
         <Link href="/">
           <a>
             <h1 className="logo">Rodanthe</h1>

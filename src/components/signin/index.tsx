@@ -23,6 +23,12 @@ const SignIn = () => {
             <span>구글로 로그인하기</span>
           </div>
         </div>
+        <div>
+          {/* <Image
+            src="/images/kakao_login_medium_wide.png"
+            width={} height={}
+          /> */}
+        </div>
       </StyledSignInBox>
     </SignInContainer>
   );
