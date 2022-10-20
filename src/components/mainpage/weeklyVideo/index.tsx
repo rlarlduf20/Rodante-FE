@@ -57,7 +57,6 @@ const VideoSection = () => {
   useEffect(() => {
     setVideoByDay(dummyVideo);
   }, [day]);
-  console.log(videoByDay);
   return (
     <VideoContainer>
       <VideoInnerContainer>

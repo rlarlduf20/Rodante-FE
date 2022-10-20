@@ -27,7 +27,11 @@ const t_board = {
   imgUri: "/images/noticeImg2.jpeg",
   link: "#",
 };
-const NoticeBoard = () => {
+
+interface NoticeBoardType {
+  access_token: string | string[] | undefined;
+}
+const NoticeBoard = ({ access_token }: NoticeBoardType) => {
   return (
     <Swiper
       initialSlide={1}
@@ -45,6 +49,7 @@ const NoticeBoard = () => {
           content={f_board.content}
           imgUri={f_board.imgUri}
           link={f_board.link}
+          access_token={access_token}
         />
       </SwiperSlide>
       <SwiperSlide>
@@ -53,6 +58,7 @@ const NoticeBoard = () => {
           content={s_board.content}
           imgUri={s_board.imgUri}
           link={s_board.link}
+          access_token={access_token}
         />
       </SwiperSlide>
       <SwiperSlide>
@@ -61,6 +67,7 @@ const NoticeBoard = () => {
           content={t_board.content}
           imgUri={t_board.imgUri}
           link={t_board.link}
+          access_token={access_token}
         />
       </SwiperSlide>
     </Swiper>

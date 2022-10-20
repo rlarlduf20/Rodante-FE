@@ -4,8 +4,13 @@ import {
 } from "../../styles/signinpage/signInBox";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const SignIn = () => {
+  const router = useRouter();
+  const onClick = () => {
+    router.push("/?access_token=hello&refresh_token=hi");
+  };
   return (
     <SignInContainer>
       <StyledSignInBox>
@@ -13,7 +18,7 @@ const SignIn = () => {
           <Link href="/">Rodante</Link>
         </h1>
         <p className="content">내가 찾던 웹드라마들이 한 곳에</p>
-        <div className="googleBtn">
+        <div className="googleBtn" onClick={onClick}>
           <div className="innerBtn">
             <Image
               src="/images/google-logo.png"
