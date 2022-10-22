@@ -7,12 +7,8 @@ const HomePage = () => {
   const [accessToken, setAccessToken] = useState<
     string | string[] | undefined
   >();
-  const [refreshToken, setRefreshToken] = useState<
-    string | string[] | undefined
-  >();
   useEffect(() => {
     setAccessToken(router.query.accessToken);
-    setRefreshToken(router.query.refreshToken);
   }, []);
 
   return (
