@@ -28,10 +28,7 @@ const t_board = {
   link: "#",
 };
 
-interface NoticeBoardType {
-  access_token: string | string[] | undefined;
-}
-const NoticeBoard = ({ access_token }: NoticeBoardType) => {
+const NoticeBoard = () => {
   return (
     <Swiper
       initialSlide={1}
@@ -49,7 +46,6 @@ const NoticeBoard = ({ access_token }: NoticeBoardType) => {
           content={f_board.content}
           imgUri={f_board.imgUri}
           link={f_board.link}
-          access_token={access_token}
         />
       </SwiperSlide>
       <SwiperSlide>
@@ -58,7 +54,6 @@ const NoticeBoard = ({ access_token }: NoticeBoardType) => {
           content={s_board.content}
           imgUri={s_board.imgUri}
           link={s_board.link}
-          access_token={access_token}
         />
       </SwiperSlide>
       <SwiperSlide>
@@ -67,7 +62,6 @@ const NoticeBoard = ({ access_token }: NoticeBoardType) => {
           content={t_board.content}
           imgUri={t_board.imgUri}
           link={t_board.link}
-          access_token={access_token}
         />
       </SwiperSlide>
     </Swiper>

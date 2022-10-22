@@ -4,6 +4,7 @@ import { Global, css, ThemeProvider } from "@emotion/react";
 import reset from "../styles/global";
 import Layout from "../components/common/layout";
 import { useRouter } from "next/router";
+import { TokenWrapper } from "../context/tokenState";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const route = useRouter().pathname;
@@ -19,13 +20,15 @@ function MyApp({ Component, pageProps }: AppProps) {
           ${reset}
         `}
       />
-      {route === "/signin" ? (
-        <Component {...pageProps} />
-      ) : (
-        <Layout>
+      <TokenWrapper>
+        {route === "/signin" ? (
           <Component {...pageProps} />
-        </Layout>
-      )}
+        ) : (
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        )}
+      </TokenWrapper>
     </>
   );
 }
