@@ -67,7 +67,7 @@ export const VideoBox = styled.div`
   gap: 18px;
 `;
 
-export const StyledVideoCard = styled.div<{ imgUri: string }>`
+export const StyledVideoCard = styled.div<{ imgUri: any }>`
   width: 360px;
   height: 277px;
   @media (max-width: 700px) {

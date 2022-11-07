@@ -32,7 +32,7 @@ const SideBlock = ({ toggleDrawer, setIsHambar }: SideBlockType) => {
         <VideoCallIcon fontSize="small" />
         <Link href="/videoRegi">
           <a>
-            <h1 style={{ marginLeft: "6px" }}>영상등록</h1>
+            <h1 style={{ marginLeft: "6px" }}>작품등록</h1>
           </a>
         </Link>
       </div>

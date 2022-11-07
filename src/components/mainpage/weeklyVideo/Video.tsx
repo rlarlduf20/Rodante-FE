@@ -12,9 +12,9 @@ const Video = ({ day, videoByDay }: VideoType) => {
   return (
     <VideoBox>
       {videoByDay.map(
-        (list, index: number) =>
-          day === list.dOfw && (
-            <StyledVideoCard key={index} imgUri={list.imgUri}>
+        (list) =>
+          day === list.dayOfWeek && (
+            <StyledVideoCard key={list.workId} imgUri={list.thumbnailImg}>
               <div className="cardImage"></div>
               <h1 className="cardTitle">{list.title}</h1>
             </StyledVideoCard>

@@ -47,7 +47,7 @@ const Navbar = () => {
           <div className="video_register">
             <Link href="/videoRegi">
               <a>
-                <h1>영상 등록</h1>
+                <h1>작품 등록</h1>
               </a>
             </Link>
           </div>
