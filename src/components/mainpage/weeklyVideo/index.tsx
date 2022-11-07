@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import {
   VideoContainer,
@@ -5,6 +6,7 @@ import {
 } from "../../../styles/mainpage/weeklyVideoSection";
 import Video from "./Video";
 import WeeklyButton from "./WeeklyButton";
+import Loading from "../../common/etc/Loading";
 
 const dummyVideo = [
   {
@@ -51,20 +53,38 @@ const dummyVideo = [
 
 const VideoSection = () => {
   const [day, setDay] = useState("mon");
+  const [loading, setLoading] = useState(true);
   const [videoByDay, setVideoByDay] = useState([
-    { dOfw: "", title: "", imgUri: "" },
+    { dOfw: "", title: "", imgUri: "", id: 0 },
   ]);
+  const [test, setTest] = useState<any>();
+  const getAllVideo = async () => {
+    try {
+      const res = await axios.get("http://localhost:8080/workAll");
+      setTest(res.data);
+      setVideoByDay(res.data);
+      setLoading(false);
+    } catch (e) {
+      console.error(e);
+    }
+  };
   useEffect(() => {
-    setVideoByDay(dummyVideo);
+    getAllVideo();
   }, [day]);
-  console.log(videoByDay);
+  console.log(test);
   return (
-    <VideoContainer>
-      <VideoInnerContainer>
-        <WeeklyButton setDay={setDay} day={day} />
-        <Video day={day} videoByDay={videoByDay} />
-      </VideoInnerContainer>
-    </VideoContainer>
+    <>
+      {loading ? (
+        <Loading />
+      ) : (
+        <VideoContainer>
+          <VideoInnerContainer>
+            <WeeklyButton setDay={setDay} day={day} />
+            <Video day={day} videoByDay={videoByDay} />
+          </VideoInnerContainer>
+        </VideoContainer>
+      )}
+    </>
   );
 };
 

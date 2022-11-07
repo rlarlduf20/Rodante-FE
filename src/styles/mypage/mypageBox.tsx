@@ -14,7 +14,7 @@ export const MyPageBox = styled.section`
   margin: 30px auto 30px;
 `;
 
-export const ProfileBox = styled.div<{ imgUri: string }>`
+export const ProfileBox = styled.div<{ img: string }>`
   width: 380px;
   height: 640px;
   border: 1px solid #c4c4c4;
@@ -24,12 +24,14 @@ export const ProfileBox = styled.div<{ imgUri: string }>`
     font-size: 24px;
   }
   .image {
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 200px;
     height: 200px;
     border-radius: 50%;
     border: 1px solid black;
     margin: 30px auto 20px;
-    background-image: url(${(props) => props.imgUri});
+    background-image: url(${(props) => props.img});
   }
   .nickname {
     margin-bottom: 30px;

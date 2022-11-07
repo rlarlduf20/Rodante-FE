@@ -3,6 +3,7 @@ import {
   NoticeBoardInnerBox,
 } from "../../../styles/mainpage/noticeSection";
 import Link from "next/link";
+import axios from "axios";
 
 interface NoticeType {
   title: string;

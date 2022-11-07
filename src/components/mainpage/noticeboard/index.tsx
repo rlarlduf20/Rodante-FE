@@ -27,12 +27,13 @@ const t_board = {
   imgUri: "/images/noticeImg2.jpeg",
   link: "#",
 };
+
 const NoticeBoard = () => {
   return (
     <Swiper
       initialSlide={1}
       centeredSlides={true}
-      autoplay={{ delay: 2000 }}
+      autoplay={{ delay: 2000, disableOnInteraction: false }}
       slidesPerView={1}
       navigation
       loop={true}

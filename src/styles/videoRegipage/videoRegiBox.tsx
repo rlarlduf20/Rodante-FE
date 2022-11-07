@@ -35,7 +35,7 @@ export const VideoRegiTitleBox = styled.div`
     }
   }
 `;
-export const VideoRegiFormBox = styled.div`
+export const VideoRegiFormBox = styled.form`
   p {
     font-size: 20px;
   }
@@ -84,12 +84,32 @@ export const VideoRegiFormBox = styled.div`
       }
     }
   }
+  .dayOfWeek {
+    display: flex;
+    margin-bottom: 38px;
+    gap: 88px;
+    .daySelect {
+      padding: 2px 20px 4px 4px;
+      color: grey;
+      border-color: #c4c4c4;
+      outline: none;
+      border-radius: 4px;
+    }
+  }
   .thumbnail {
     display: flex;
     margin-bottom: 38px;
-
     p {
       margin-right: 20px;
+    }
+
+    .imgBox {
+      width: 256px;
+      height: 192px;
+      border: 1px solid #c4c4c4;
+      background: white;
+      overflow: hidden;
+      border-radius: 4px;
     }
   }
   .btn {

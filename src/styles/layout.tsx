@@ -80,6 +80,13 @@ export const NavbarDiv = styled.nav<{
         background: white;
       }
     }
+    .mypage {
+      margin: 0 14px 0 14px;
+      cursor: pointer;
+    }
+    .logout {
+      cursor: pointer;
+    }
     .signin {
       color: black;
       display: inline-block;
@@ -138,10 +145,23 @@ export const SideBox = styled(Box)`
       color: #f2ea9c;
     }
   }
+  .sideMy {
+    padding: 20px 0 20px 15px;
+    cursor: pointer;
+    &:hover h1 {
+      color: #f2ea9c;
+    }
+  }
+  .sideLogout {
+    padding: 20px 0 20px 15px;
+    cursor: pointer;
+    &:hover h1 {
+      color: #f2ea9c;
+    }
+  }
   .sideRegi {
     padding: 20px 0 20px 15px;
     cursor: pointer;
-
     &:hover h1 {
       color: #f2ea9c;
     }
