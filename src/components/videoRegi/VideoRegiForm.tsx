@@ -77,13 +77,13 @@ const VideoRegiForm = () => {
     bucketName: "rodanthe-s3",
     dirName: "UserImg",
     region: "ap-northeast-2",
-    accessKeyId: "AKIAVATFAWMSH7U52MV4",
-    secretAccessKey: "pYOwZ+GhA2NYnS7l5l4MLj2/q2RgdZJ912lzRNc",
+    accessKeyId: `${process.env.REACT_APP_S3_ACCESS}`,
+    secretAccessKey: `${process.env.REACT_APP_S3_SECRET}`,
   };
 
   const onRegi = async () => {
     const s3 = new ReactS3Client(s3config);
-    const filename = `${workId}/${workId}.jpeg`;
+    const filename = `${workId}/${workId}`;
     try {
       const res = await s3.uploadFile(file, filename);
       console.log(res);
