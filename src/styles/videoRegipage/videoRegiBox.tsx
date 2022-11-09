@@ -115,6 +115,7 @@ export const VideoRegiFormBox = styled.form`
   .btn {
     width: 100%;
     display: flex;
+    gap: 20px;
     justify-content: flex-end;
     .regiBtn {
       border: none;
@@ -126,6 +127,18 @@ export const VideoRegiFormBox = styled.form`
       margin-bottom: 40px;
       &:hover {
         background: #fff259;
+      }
+    }
+    .prevBtn {
+      border: none;
+      color: white;
+      background: #e2e2e2;
+      padding: 20px 40px;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-bottom: 40px;
+      &:hover {
+        background: #c4c4c4;
       }
     }
   }
