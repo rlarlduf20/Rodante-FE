@@ -7,10 +7,7 @@ const dummyWatchVideo = [
   { title: "연애 플레이리스트", thumbnail: "/images/playlist.jpeg" },
   { title: "연애 플레이리스트", thumbnail: "/images/playlist.jpeg" },
 ];
-const dummyUploadVideo = [
-  { title: "에이틴", thumnail: "/images/18img.jpeg" },
-  { title: "에이틴", thumnail: "/images/18img.jpeg" },
-];
+const dummyUploadVideo = [{ title: "강아지", thumnail: "/images/dog.jpeg" }];
 const Locker = () => {
   const [type, setType] = useState("watch");
   return (
@@ -18,7 +15,7 @@ const Locker = () => {
       <h1 className="title">보관함</h1>
       <div className="typeRadio">
         <div className="watchVideo" onClick={() => setType("watch")}>
-          현재 시청중인 목록
+          내가 찜한 영상
         </div>
         <div className="uploadVideo" onClick={() => setType("upload")}>
           나의 업로드한 영상

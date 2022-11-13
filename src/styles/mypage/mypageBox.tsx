@@ -127,8 +127,13 @@ export const UploadVideoCard = styled.div<{ thumbnail: string }>`
   .thumbnail {
     width: 320px;
     height: 209px;
-    background-image: url("/images/18img.jpeg");
+    background-image: url("/images/dog.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
     margin-bottom: 18px;
+    cursor: pointer;
   }
   p {
     text-align: center;

@@ -33,7 +33,7 @@ const NoticeBoard = () => {
     <Swiper
       initialSlide={1}
       centeredSlides={true}
-      autoplay={{ delay: 2000, disableOnInteraction: false }}
+      autoplay
       slidesPerView={1}
       navigation
       loop={true}
