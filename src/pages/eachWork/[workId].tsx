@@ -1,4 +1,4 @@
-import EachWorkMain from "../components/eachWork";
+import EachWorkMain from "../../components/eachWork";
 
 const EachPage = () => {
   return <EachWorkMain />;

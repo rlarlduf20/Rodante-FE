@@ -51,13 +51,6 @@ const Navbar = () => {
               </a>
             </Link>
           </div>
-          <div className="challenge">
-            <Link href="#">
-              <a>
-                <h1>도전 웹드라마</h1>
-              </a>
-            </Link>
-          </div>
         </div>
         <div className="none"></div>
         <div className="etc">

@@ -70,12 +70,14 @@ export const VideoBox = styled.div`
 export const StyledVideoCard = styled.div<{ imgUri: any }>`
   width: 360px;
   height: 277px;
+
   @media (max-width: 700px) {
     width: 240px;
     height: 197px;
   }
   .cardImage {
     width: 100%;
+    cursor: pointer;
     @media (max-width: 700px) {
       height: 160px;
     }

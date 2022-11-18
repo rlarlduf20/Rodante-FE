@@ -16,12 +16,13 @@ export const MyPageBox = styled.section`
 
 export const ProfileBox = styled.div<{ img: string }>`
   width: 380px;
-  height: 640px;
+  height: 550px;
   border: 1px solid #c4c4c4;
   padding: 44px 29px;
   background-color: white;
   .title {
     font-size: 24px;
+    margin-top: 20px;
   }
   .image {
     background-repeat: no-repeat;
@@ -30,7 +31,7 @@ export const ProfileBox = styled.div<{ img: string }>`
     height: 200px;
     border-radius: 50%;
     border: 1px solid black;
-    margin: 30px auto 20px;
+    margin: 80px auto 20px;
     background-image: url(${(props) => props.img});
   }
   .nickname {
@@ -52,16 +53,6 @@ export const ProfileBox = styled.div<{ img: string }>`
       color: white;
       border: none;
     }
-  }
-  .membership {
-    margin: 100px auto 0;
-    width: 265px;
-    padding: 21px 0;
-    background-color: #f2ea9c;
-    font-size: 32px;
-    color: white;
-    text-align: center;
-    cursor: pointer;
   }
 `;
 

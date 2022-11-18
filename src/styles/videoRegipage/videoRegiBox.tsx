@@ -99,10 +99,16 @@ export const VideoRegiFormBox = styled.form`
   .thumbnail {
     display: flex;
     margin-bottom: 38px;
+    position: relative;
     p {
       margin-right: 20px;
     }
-
+    .warning {
+      position: absolute;
+      font-size: 14px;
+      top: 40px;
+      color: #c30004;
+    }
     .imgBox {
       width: 256px;
       height: 192px;
