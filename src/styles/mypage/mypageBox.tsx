@@ -58,7 +58,7 @@ export const ProfileBox = styled.div<{ img: string }>`
 
 export const LockerBox = styled.div<{ type: string }>`
   width: 792px;
-  height: 819px;
+  min-height: 819px;
   border: 1px solid #c4c4c4;
   background-color: white;
   padding: 40px 40px;
@@ -118,7 +118,7 @@ export const UploadVideoCard = styled.div<{ thumbnail: string }>`
   .thumbnail {
     width: 320px;
     height: 209px;
-    background-image: url("/images/dog.jpeg");
+    background-image: url(${(props) => props.thumbnail});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

@@ -6,6 +6,13 @@ export const EachWorkContainer = styled.section`
   padding: 50px;
   border-radius: 15px;
   box-shadow: 8px 11px 15px rgba(0, 0, 0, 0.25);
+  .noVideoText {
+    margin-top: 130px;
+    margin-bottom: 100px;
+    color: #81a1e1;
+    font-size: 48px;
+    text-align: center;
+  }
   .addCircle {
     background-color: black;
     color: white;
@@ -27,6 +34,8 @@ export const TitleBox = styled.div<{ url: string }>`
   justify-content: flex-end;
   align-items: center;
   gap: 40px;
+  position: relative;
+
   .infoBox {
     display: flex;
     flex-direction: column;
@@ -39,6 +48,8 @@ export const TitleBox = styled.div<{ url: string }>`
     .content {
       font-size: 20px;
       color: #cecaca;
+      width: 400px;
+      text-align: end;
     }
   }
   .thumbnail {
@@ -47,6 +58,39 @@ export const TitleBox = styled.div<{ url: string }>`
     background-image: url(${(props) => props.url});
     background-size: cover;
     background-position: center;
+  }
+  .file {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 200px;
+    right: 60px;
+    border: 1px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: black;
+    .fileImg {
+      display: none;
+    }
+  }
+  .edit {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 200px;
+    right: 10px;
+    border: 1px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: black;
   }
 `;
 

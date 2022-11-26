@@ -248,11 +248,13 @@ const VideoRegiForm = () => {
   const [imgSrc, setImgSrc] = useState("");
   const encodeFileToBase64 = (fileBlob: any) => {
     setFile(fileBlob);
+    console.log(fileBlob);
     const reader: any = new FileReader();
     reader.readAsDataURL(fileBlob);
     return new Promise<void>((resolve) => {
       reader.onload = () => {
         setImgSrc(reader.result);
+
         resolve();
       };
     });
@@ -265,7 +267,7 @@ const VideoRegiForm = () => {
   const [file, setFile] = useState<any>();
   const [fileName, setFileName] = useState("");
   const [me, setMe] = useState<any>();
-
+  console.log(imgSrc);
   const onChangeTitle = (e: any) => {
     setTitle(e.target.value);
   };

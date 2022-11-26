@@ -10,7 +10,7 @@ const MyPageMain = ({ myInfo }: MyPageProp) => {
     <>
       <MyPageBox>
         <Profile myInfo={myInfo} />
-        <Locker />
+        <Locker myInfo={myInfo} />
       </MyPageBox>
     </>
   );

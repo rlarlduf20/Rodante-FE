@@ -1,7 +1,7 @@
 import EachWorkMain from "../components/eachWork";
 
 const WorkVideoAddPage = () => {
-  return <EachWorkMain add="add" />;
+  return <EachWorkMain />;
 };
 
 export default WorkVideoAddPage;
