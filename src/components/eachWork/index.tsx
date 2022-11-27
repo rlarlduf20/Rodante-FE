@@ -4,7 +4,7 @@ import {
   EachWorkContainer,
   TitleBox,
 } from "../../styles/eachWorkPage/eachWorkBox";
-import { VideoBox } from "../../styles/eachWorkPage/eachWorkBox";
+import { VideoBox, VideoList } from "../../styles/eachWorkPage/eachWorkBox";
 import EditIcon from "@mui/icons-material/Edit";
 import { Modal } from "@mui/material";
 import { useState, useEffect } from "react";
@@ -55,21 +55,28 @@ const dummyVideo = {
 };
 
 const EachWorkMain = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [imgFile, setImgFile] = useState<any>();
   const [videoFile, setVideoFile] = useState<any>();
   const [uploadDelay, setUploadDelay] = useState(false);
   const [videoList, setVideoList] = useState<any>();
   const [videoInfo, setVideoInfo] = useState<any>();
-  const router = useRouter();
-  console.log(router);
-  const params = router.query.regi;
-  const workId = router.query.workId;
+  const [index, setIndex] = useState(0);
 
+  const router = useRouter();
+  const params = router.query.regi;
+  const [workId, setWorkId] = useState(router.query.workId);
   const s3config = {
     bucketName: "rodanthe-s3",
     dirName: "DramaVideo",
+    region: "ap-northeast-2",
+    accessKeyId: `${process.env.NEXT_PUBLIC_S3_ACCESS}`,
+    secretAccessKey: `${process.env.NEXT_PUBLIC_S3_SECRET}`,
+  };
+  const s3configImg = {
+    bucketName: "rodanthe-s3",
+    dirName: "UserImg",
     region: "ap-northeast-2",
     accessKeyId: `${process.env.NEXT_PUBLIC_S3_ACCESS}`,
     secretAccessKey: `${process.env.NEXT_PUBLIC_S3_SECRET}`,
@@ -78,71 +85,90 @@ const EachWorkMain = () => {
     setImgFile(e.target.files[0]);
   };
   const onClickEdit = async () => {
-    const s3 = new ReactS3Client(s3config);
-    const filename = `${workId}/${workId}`;
+    const work = Number(workId);
+    const s3 = new ReactS3Client(s3configImg);
+    const filename = `${work}/${work}`;
     try {
       await s3.deleteFile(filename);
       await s3.uploadFile(imgFile, filename);
       alert("썸네일 변경 성공");
-      window.location.reload();
+      window.location.replace("/");
     } catch (e) {
       console.error(e);
     }
   };
   const onClickVideoRegi = async () => {
+    const work = Number(workId);
     const id = dummyVideo.videoList.length + 1;
-    const filename = `${workId}/${id}`;
+    const filename = `${work}/${id}`;
     const s3 = new ReactS3Client(s3config);
     setUploadDelay(true);
     try {
       await s3.uploadFile(videoFile, filename);
       alert("영상 등록 성공");
-      window.location.reload();
+      window.location.replace("/");
     } catch (e) {
       alert("다시 시도해주세요.");
-      window.location.reload();
+      window.location.replace("/");
+    }
+    try {
+      await axios.post("http://localhost:8080/video/getInfo", {
+        workId: work,
+        episode: index,
+      });
+      alert("영상등록에 성공했습니다.");
+      window.location.replace("/");
+    } catch (e) {
+      console.error(e);
+      alert("다시한번 시도해주세요.");
+      window.location.replace("/");
     }
   };
   const getEachWork = async () => {
-    const access = localStorage.getItem("access_token");
+    const work = Number(workId);
     try {
-      const res = await axios.get(`http://localhost:8080/work/${workId}`, {
-        headers: {
-          Authorization: `Bearer ${access}`,
-        },
-      });
+      const res = await axios.get(`http://localhost:8080/work/${work}`);
       setVideoInfo(res.data);
+      console.log(res.data);
     } catch (e) {
       console.error(e);
     }
     try {
       const res = await axios.get(
-        `http://localhost:8080/work/videolist/${workId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${access}`,
-          },
-        }
+        `http://localhost:8080/work/videoList/${work}`
       );
       setVideoList(res.data);
+      console.log(res.data);
       setLoading(false);
     } catch (e) {
       console.error(e);
     }
   };
+  const playVideo = async () => {
+    try {
+      window.open();
+    } catch (e) {
+      console.error(e);
+      alert("영상 재생에 실패했습니다.");
+    }
+  };
   useEffect(() => {
     getEachWork();
   }, []);
+  useEffect(() => {
+    setWorkId(router.query.workId);
+  }, [workId]);
+
   return (
     <>
       {loading ? (
         <Loading />
       ) : (
         <EachWorkContainer>
-          <TitleBox url={dummyVideo.thumbnail}>
+          <TitleBox url={videoInfo.coverImg}>
             <div className="infoBox">
-              <p className="title">{dummyVideo.title}</p>
-              <p className="content">{dummyVideo.content}</p>
+              <p className="title">{videoInfo.title}</p>
+              <p className="content">{videoInfo.description}</p>
             </div>
             <div className="thumbnail"></div>
             {params === "true" && (
@@ -162,17 +188,18 @@ const EachWorkMain = () => {
               </>
             )}
           </TitleBox>
-          {dummyVideo.videoList.length !== 0 ? (
+          {videoList.length !== 0 ? (
             <VideoBox>
-              {/* {videoList.map((item: any) => (
-                <div className="videoItem" key={item.id}>
-                  <Image src={item.thumbnail} width={170.6} height={128} />
-                  <p className="title">
-                    {item.id}화 {item.title}
-                  </p>
-                  <p className="date">{item.date}</p>
-                </div>
-              ))} */}
+              {videoList.map((item: any) => (
+                <VideoList
+                  uri={videoInfo.coverImg}
+                  key={item.id}
+                  onClick={() => window.open(item.videoUrl, "_blank")}
+                >
+                  <div className="cover"></div>
+                  <p className="title">{item.episode}화</p>
+                </VideoList>
+              ))}
             </VideoBox>
           ) : (
             <div className="noVideoText">곧 영상등록 예정인 작품입니다.</div>
@@ -190,7 +217,12 @@ const EachWorkMain = () => {
                 accept="video/mp4"
                 onChange={(e: any) => setVideoFile(e.target.files[0])}
               />
-              <input type="text" placeholder="제목" className="titleInput" />
+              <input
+                type="number"
+                placeholder="몇화"
+                className="titleInput"
+                onChange={(e: any) => setIndex(e.target.value)}
+              />
               <button
                 className="btn"
                 onClick={onClickVideoRegi}

@@ -98,24 +98,28 @@ export const VideoBox = styled.div`
   margin-top: 10px;
   display: flex;
   flex-direction: column;
-  .videoItem {
-    cursor: pointer;
-    padding: 20px 0;
-    border-right: 1px solid #e2e2e2;
-    border-bottom: 1px solid #e2e2e2;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    gap: 23px;
-    .title {
-      flex-grow: 1;
-      font-size: 18px;
-    }
-    .date {
-      font-size: 18px;
-      color: #c4c4c4;
-    }
+`;
+
+export const VideoList = styled.div<{ uri: string }>`
+  cursor: pointer;
+  padding: 20px 0;
+  border-right: 1px solid #e2e2e2;
+  border-bottom: 1px solid #e2e2e2;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  .cover {
+    background-image: url(${(props) => props.uri});
+    width: 170.6px;
+    height: 128px;
+    background-position: center;
+    background-size: cover;
+  }
+  .title {
+    flex-grow: 1;
+    font-size: 18px;
   }
 `;
