@@ -32,3 +32,25 @@ export const ModalBox = styled.div`
     cursor: pointer;
   }
 `;
+
+export const VideoModalBox = styled.div`
+  width: 1000px;
+  height: 700px;
+  background-color: white;
+  outline: none;
+  position: absolute;
+  margin-left: -500px;
+  margin-top: -350px;
+  top: 50vh;
+  left: 50vw;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .back {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    cursor: pointer;
+  }
+`;

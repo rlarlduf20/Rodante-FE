@@ -58,6 +58,7 @@ export const TitleBox = styled.div<{ url: string }>`
     background-image: url(${(props) => props.url});
     background-size: cover;
     background-position: center;
+    border-radius: 5px;
   }
   .file {
     width: 40px;
@@ -117,6 +118,17 @@ export const VideoList = styled.div<{ uri: string }>`
     height: 128px;
     background-position: center;
     background-size: cover;
+    border-radius: 5px;
+    overflow: hidden;
+    .blur {
+      background-color: black;
+      opacity: 0.6;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
   .title {
     flex-grow: 1;
