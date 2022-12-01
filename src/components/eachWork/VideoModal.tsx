@@ -1,7 +1,6 @@
 import { Modal } from "@mui/material";
 import { VideoModalBox } from "../../styles/modal";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useState } from "react";
 
 interface VideoModalType {
   videoModal: boolean;

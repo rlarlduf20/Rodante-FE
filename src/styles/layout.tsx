@@ -12,9 +12,7 @@ export const HeaderDiv = styled.header<{ ylocation: number }>`
   z-index: 10;
 `;
 
-export const NavbarDiv = styled.nav<{
-  search: boolean;
-}>`
+export const NavbarDiv = styled.nav<{ search: boolean }>`
   max-width: calc(100vw - 100px);
   margin: 0 auto;
   height: 100%;
