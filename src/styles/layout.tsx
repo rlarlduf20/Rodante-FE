@@ -66,7 +66,6 @@ export const NavbarDiv = styled.nav<{ search: boolean }>`
       display: inline-block;
       cursor: pointer;
       background: ${(props) => (props.search ? "white" : "transparent")};
-
       padding: ${(props) => (props.search ? "4.35px 0 4.35px 0" : 0)};
       &:hover {
         background: white;
@@ -181,6 +180,7 @@ export const FooterDiv = styled.footer`
     display: flex;
     justify-content: flex-end;
     .footer_content {
+      margin-top: 15px;
       color: white;
       font-size: 24px;
       @media (max-width: 600px) {

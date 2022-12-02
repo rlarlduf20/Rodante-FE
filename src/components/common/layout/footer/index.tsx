@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="inner_footer">
         <div className="footer_content">
           <CopyrightIcon />
-          <h1>Rodante</h1>
+          <h1>Rodanthe</h1>
         </div>
       </div>
     </FooterDiv>

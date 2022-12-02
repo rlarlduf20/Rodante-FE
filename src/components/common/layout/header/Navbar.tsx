@@ -6,7 +6,7 @@ import React, { useState, useRef } from "react";
 import SideBlock from "./SideBlock";
 import Drawer from "@mui/material/Drawer";
 import { useTokenContext } from "../../../../context/tokenState";
-import { truncate } from "fs";
+import axios from "axios";
 
 const Navbar = () => {
   const [search, setSearch] = useState(false);

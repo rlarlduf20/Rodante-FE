@@ -35,7 +35,12 @@ export const TitleBox = styled.div<{ url: string }>`
   align-items: center;
   gap: 40px;
   position: relative;
-
+  .jjim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+  }
   .infoBox {
     display: flex;
     flex-direction: column;
@@ -131,7 +136,8 @@ export const VideoList = styled.div<{ uri: string }>`
     }
   }
   .title {
-    flex-grow: 1;
+    /* flex-grow: 1; */
+    margin-right: -13px;
     font-size: 18px;
   }
 `;

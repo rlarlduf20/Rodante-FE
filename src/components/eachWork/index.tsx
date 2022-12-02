@@ -14,6 +14,8 @@ import axios from "axios";
 import Loading from "../common/etc/Loading";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import VideoModal from "./VideoModal";
 
 const EachWorkMain = () => {
@@ -25,7 +27,9 @@ const EachWorkMain = () => {
   const [uploadDelay, setUploadDelay] = useState(false);
   const [videoList, setVideoList] = useState<any>();
   const [videoInfo, setVideoInfo] = useState<any>();
-  const [index, setIndex] = useState(0);
+  const [title, setTitle] = useState("");
+  const [favorite, setFavorite] = useState(false);
+  const [myId, setMyId] = useState<any>();
 
   const router = useRouter();
   const params = router.query.regi;
@@ -62,6 +66,15 @@ const EachWorkMain = () => {
       console.error(e);
     }
   };
+  const onClickVideo = async () => {
+    const access_token = localStorage.getItem("access_token");
+    if (access_token) {
+      setVideoModal(true);
+    } else {
+      alert("로그인이 필요한 서비스입니다.");
+      window.location.replace("/signin");
+    }
+  };
   const onClickVideoRegi = async () => {
     const work = window.location.pathname.split("/")[2];
     console.log(typeof work);
@@ -78,61 +91,37 @@ const EachWorkMain = () => {
     try {
       await axios.post("http://localhost:8080/video/getInfo", {
         workId: work,
-        episode: index,
+        episode: id,
+        episodeTitle: title,
       });
       alert("영상등록에 성공했습니다.");
-      window.location.replace("/mypage");
+      window.location.replace(`/eachWork/${work}?regi=true`);
     } catch (e) {
       console.error(e);
       alert("다시한번 시도해주세요.");
-      window.location.replace("/mypage");
+      window.location.replace(`/eachWork/${work}?regi=true`);
     }
   };
-  // const getEachWork = async () => {
-  //   const work = window.location.pathname.split("/")[2];
-  //   try {
-  //     const res = await axios.get(`http://localhost:8080/work/${work}`);
-  //     setVideoInfo(res.data);
-  //     console.log(res.data);
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  //   try {
-  //     const res = await axios.get(
-  //       `http://localhost:8080/work/videoList/${work}`
-  //     );
-  //     setVideoList(res.data);
-  //     console.log(res.data);
-  //     setLoading(false);
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // };
 
   useEffect(() => {
     (async () => {
       const work = window.location.pathname.split("/")[2];
+      const access = localStorage.getItem("access_token");
       try {
         const res = await axios.get(`http://localhost:8080/work/${work}`);
         setVideoInfo(res.data);
-        console.log(res.data);
-      } catch (e) {
-        console.error(e);
-      }
-      try {
-        const res = await axios.get(
-          `http://localhost:8080/work/videoList/${work}`
+        const myRes = await axios.get("http://localhost:8080/user/me", {
+          headers: {
+            Authorization: `Bearer ${access}`,
+          },
+        });
+        setMyId(myRes.data.id);
+        console.log("마이 id", myRes.data.id);
+        const res2 = await axios.get(
+          `http://localhost:8080/user/jjim/work/get/${myRes.data.id}/${res.data.workId}`
         );
-        setVideoList(res.data);
-        console.log(res.data);
-        setLoading(false);
-      } catch (e) {
-        console.error(e);
-      }
-      try {
-        const res = await axios.get(`http://localhost:8080/work/${work}`);
-        setVideoInfo(res.data);
-        console.log(res.data);
+        setFavorite(res2.data);
+        console.log("찜", res2.data);
       } catch (e) {
         console.error(e);
       }
@@ -147,23 +136,77 @@ const EachWorkMain = () => {
         console.error(e);
       }
     })();
-  }, []);
+  }, [myId]);
   // useEffect(() => {
   //   setWorkId(window.location.pathname.split("/")[2]);
   // }, []);
-
+  const onClickJJim = async () => {
+    const access = localStorage.getItem("access_token");
+    let body = {
+      id: myId,
+      workId: videoInfo.workId,
+    };
+    try {
+      const res = await axios.post(
+        "http://localhost:8080/user/jjim/work",
+        body,
+        {
+          headers: {
+            Authorization: `Bearer ${access}`,
+          },
+        }
+      );
+      console.log(res);
+    } catch (e) {
+      console.error(e);
+    }
+    setFavorite((prev) => !prev);
+  };
+  const onDelJJim = async () => {
+    const access = localStorage.getItem("access_token");
+    let body = {
+      id: myId,
+      workId: videoInfo.workId,
+    };
+    try {
+      const res = await axios.post(
+        "http://localhost:8080/user/jjim/work/delete",
+        body,
+        {
+          headers: {
+            Authorization: `Bearer ${access}`,
+          },
+        }
+      );
+      console.log(res);
+    } catch (e) {
+      console.error(e);
+    }
+    setFavorite((prev) => !prev);
+  };
   return (
     <>
       {loading ? (
         <Loading />
       ) : (
         <EachWorkContainer>
-          <TitleBox url={videoInfo.coverImg}>
+          <TitleBox url={videoInfo?.coverImg}>
             <div className="infoBox">
-              <p className="title">{videoInfo.title}</p>
-              <p className="content">{videoInfo.description}</p>
+              <p className="title">{videoInfo?.title}</p>
+              <p className="content">{videoInfo?.description}</p>
             </div>
             <div className="thumbnail"></div>
+
+            {favorite ? (
+              <div className="jjim" onClick={onDelJJim}>
+                <FavoriteIcon fontSize="large" color="warning" />
+              </div>
+            ) : (
+              <div className="jjim" onClick={onClickJJim}>
+                <FavoriteBorderIcon fontSize="large" color="warning" />
+              </div>
+            )}
+
             {params === "true" && (
               <>
                 <label className="file" onClick={onClickEdit}>
@@ -186,9 +229,9 @@ const EachWorkMain = () => {
               {videoList.map((item: any) => (
                 <>
                   <VideoList
-                    uri={videoInfo.coverImg}
+                    uri={videoInfo?.coverImg}
                     key={item.id}
-                    onClick={() => setVideoModal(true)}
+                    onClick={onClickVideo}
                     // onClick={() => window.open(item.videoUrl, "_blank")}
                   >
                     <div className="cover">
@@ -197,6 +240,7 @@ const EachWorkMain = () => {
                       </div>
                     </div>
                     <p className="title">{item.episode}화</p>
+                    <p>{item.episodeTitle}</p>
                   </VideoList>
                   <VideoModal
                     videoModal={videoModal}
@@ -223,10 +267,10 @@ const EachWorkMain = () => {
                 onChange={(e: any) => setVideoFile(e.target.files[0])}
               />
               <input
-                type="number"
-                placeholder="몇화"
+                type="text"
+                placeholder="제목"
                 className="titleInput"
-                onChange={(e: any) => setIndex(e.target.value)}
+                onChange={(e: any) => setTitle(e.target.value)}
               />
               <button
                 className="btn"
