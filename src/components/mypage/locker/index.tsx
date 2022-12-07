@@ -3,12 +3,7 @@ import { LockerBox } from "../../../styles/mypage/mypageBox";
 import WatchVideo from "./WatchVideo";
 import UploadVideo from "./UploadVideo";
 import axios from "axios";
-const dummyWatchVideo: any = [
-  // { title: "연애 플레이리스트", thumbnail: "/images/playlist.jpeg" },
-  // { title: "연애 플레이리스트", thumbnail: "/images/playlist.jpeg" },
-  // { title: "연애 플레이리스트", thumbnail: "/images/playlist.jpeg" },
-];
-const dummyUploadVideo = [{ title: "강아지", thumnail: "/images/dog.jpeg" }];
+
 const Locker = ({ myInfo }: { myInfo: any }) => {
   const [type, setType] = useState("watch");
   const [uploadVideo, setUploadVideo] = useState<any>();
@@ -29,7 +24,7 @@ const Locker = ({ myInfo }: { myInfo: any }) => {
         </div>
       </div>
       {type === "watch" ? (
-        <WatchVideo w_video={dummyWatchVideo} />
+        <WatchVideo myInfo={myInfo} />
       ) : (
         <UploadVideo u_video={uploadVideo} myInfo={myInfo} />
       )}

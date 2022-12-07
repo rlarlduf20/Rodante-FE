@@ -56,6 +56,76 @@ export const TitleBox = styled.div<{ url: string }>`
       width: 400px;
       text-align: end;
     }
+    .inputTitle {
+      padding: 5px 0 5px 5px;
+      outline: none;
+      border: none;
+      border-bottom: 2px solid #999;
+      border-radius: 5px;
+      color: #888;
+    }
+    .inputDes {
+      padding: 5px;
+      height: 100px;
+      outline: none;
+      border: none;
+      border-bottom: 2px solid #999;
+      border-radius: 5px;
+      color: #888;
+    }
+    .inputDOW,
+    .inputGenre {
+      padding: 2px;
+      color: #888;
+      outline: none;
+      border: none;
+      border-bottom: 2px solid #999;
+      border-radius: 5px;
+    }
+  }
+  .edit_text {
+    position: absolute;
+    top: 150px;
+    left: 280px;
+    cursor: pointer;
+    transition: 0.2s;
+    &:hover {
+      transition: 0.2s;
+      transform: scale(1.2);
+    }
+  }
+  .confirm {
+    position: absolute;
+    top: 150px;
+    left: 280px;
+    cursor: pointer;
+    transition: 0.2s;
+    &:hover {
+      transition: 0.2s;
+      transform: scale(1.2);
+    }
+  }
+  .cancel {
+    position: absolute;
+    top: 150px;
+    left: 240px;
+    cursor: pointer;
+    transition: 0.2s;
+    &:hover {
+      transition: 0.2s;
+      transform: scale(1.2);
+    }
+  }
+  .del {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    transition: 0.2s;
+    &:hover {
+      transition: 0.2s;
+      transform: scale(1.2);
+    }
   }
   .thumbnail {
     width: 256px;

@@ -16,6 +16,9 @@ import FileUploadIcon from "@mui/icons-material/FileUpload";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import DeleteIcon from "@mui/icons-material/Delete";
+import CheckIcon from "@mui/icons-material/Check";
+import CloseIcon from "@mui/icons-material/Close";
 import VideoModal from "./VideoModal";
 
 const EachWorkMain = () => {
@@ -30,6 +33,11 @@ const EachWorkMain = () => {
   const [title, setTitle] = useState("");
   const [favorite, setFavorite] = useState(false);
   const [myId, setMyId] = useState<any>();
+  const [textEditState, setTextEditState] = useState(false);
+  const [editTitle, setEditTitle] = useState("");
+  const [editDes, setEditDes] = useState("");
+  const [editGenre, setEditGenre] = useState("");
+  const [editDOW, setEditDOW] = useState("");
 
   const router = useRouter();
   const params = router.query.regi;
@@ -137,9 +145,12 @@ const EachWorkMain = () => {
       }
     })();
   }, [myId]);
-  // useEffect(() => {
-  //   setWorkId(window.location.pathname.split("/")[2]);
-  // }, []);
+  useEffect(() => {
+    setEditTitle(videoInfo?.title);
+    setEditDes(videoInfo?.description);
+    setEditDOW(videoInfo?.dayOfWeek);
+    setEditGenre(videoInfo?.genre);
+  }, [videoInfo]);
   const onClickJJim = async () => {
     const access = localStorage.getItem("access_token");
     let body = {
@@ -184,6 +195,53 @@ const EachWorkMain = () => {
     }
     setFavorite((prev) => !prev);
   };
+  const onClickDelWork = async () => {
+    const access = localStorage.getItem("access_token");
+    const work = window.location.pathname.split("/")[2];
+    try {
+      await axios.delete(`http://localhost:8080/user/work/delete/${work}`, {
+        headers: {
+          Authorization: `Bearer ${access}`,
+        },
+      });
+      alert("작품 삭제 완료");
+      window.location.replace("/mypage");
+    } catch (e) {
+      console.error(e);
+      alert("작품 삭제 권한이 없습니다.");
+    }
+  };
+  const onClickTextEdit = async () => {
+    const access = localStorage.getItem("access_token");
+    const work = window.location.pathname.split("/")[2];
+    let data = {
+      title: editTitle,
+      genre: editGenre,
+      description: editDes,
+      dayOfWeek: editDOW,
+    };
+    if (
+      editTitle === "" ||
+      editGenre === "" ||
+      editDes === "" ||
+      editDOW === ""
+    ) {
+      alert("모든 입력란을 채워주세요");
+      return;
+    }
+    try {
+      await axios.put(`http://localhost:8080/user/work/update/${work}`, data, {
+        headers: {
+          Authorization: `Bearer ${access}`,
+        },
+      });
+      alert("내용 수정 완료");
+      window.location.replace("/mypage");
+    } catch (e) {
+      console.error(e);
+      alert("작품 삭제 권한이 없습니다.");
+    }
+  };
   return (
     <>
       {loading ? (
@@ -191,10 +249,52 @@ const EachWorkMain = () => {
       ) : (
         <EachWorkContainer>
           <TitleBox url={videoInfo?.coverImg}>
-            <div className="infoBox">
-              <p className="title">{videoInfo?.title}</p>
-              <p className="content">{videoInfo?.description}</p>
-            </div>
+            {textEditState ? (
+              <>
+                <div className="infoBox">
+                  <input
+                    className="inputTitle"
+                    value={editTitle}
+                    onChange={(e) => setEditTitle(e.target.value)}
+                  />
+                  <textarea
+                    className="inputDes"
+                    value={editDes}
+                    onChange={(e) => setEditDes(e.target.value)}
+                  />
+                  <select
+                    className="inputDOW"
+                    defaultValue={""}
+                    onClick={(e: any) => setEditDOW(e.target.value)}
+                  >
+                    <option value="">{editDOW}</option>
+                    <option value="mon">월</option>
+                    <option value="tue">화</option>
+                    <option value="wed">수</option>
+                    <option value="thu">목</option>
+                    <option value="fri">금</option>
+                    <option value="sat">토</option>
+                    <option value="sun">일</option>
+                  </select>
+                  <select
+                    className="inputGenre"
+                    defaultValue={""}
+                    onClick={(e: any) => setEditGenre(e.target.value)}
+                  >
+                    <option value="">{editGenre}</option>
+                    <option value="romance">로맨스</option>
+                    <option value="mood">감성</option>
+                    <option value="comedy">코미디</option>
+                  </select>
+                </div>
+              </>
+            ) : (
+              <div className="infoBox">
+                <p className="title">{videoInfo?.title}</p>
+                <p className="content">{videoInfo?.description}</p>
+              </div>
+            )}
+
             <div className="thumbnail"></div>
 
             {favorite ? (
@@ -205,6 +305,38 @@ const EachWorkMain = () => {
               <div className="jjim" onClick={onClickJJim}>
                 <FavoriteBorderIcon fontSize="large" color="warning" />
               </div>
+            )}
+            {params === "true" && (
+              <>
+                {textEditState ? (
+                  <>
+                    <div className="confirm">
+                      <CheckIcon
+                        fontSize="large"
+                        color="action"
+                        onClick={onClickTextEdit}
+                      />
+                    </div>
+                    <div
+                      className="cancel"
+                      onClick={() => setTextEditState(false)}
+                    >
+                      <CloseIcon fontSize="large" color="action" />
+                    </div>
+                  </>
+                ) : (
+                  <div
+                    className="edit_text"
+                    onClick={() => setTextEditState(true)}
+                  >
+                    <EditIcon fontSize="large" color="action" />
+                  </div>
+                )}
+
+                <div className="del" onClick={onClickDelWork}>
+                  <DeleteIcon fontSize="large" color="action" />
+                </div>
+              </>
             )}
 
             {params === "true" && (
@@ -232,7 +364,6 @@ const EachWorkMain = () => {
                     uri={videoInfo?.coverImg}
                     key={item.id}
                     onClick={onClickVideo}
-                    // onClick={() => window.open(item.videoUrl, "_blank")}
                   >
                     <div className="cover">
                       <div className="blur">

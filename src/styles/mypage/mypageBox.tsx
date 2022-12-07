@@ -98,7 +98,12 @@ export const WatchVideoCard = styled.div<{ thumbnail: string }>`
     width: 320px;
     height: 209px;
     background-image: url(${(props) => props.thumbnail});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
     margin-bottom: 18px;
+    cursor: pointer;
   }
   p {
     text-align: center;
