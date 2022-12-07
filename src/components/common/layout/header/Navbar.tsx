@@ -6,15 +6,21 @@ import React, { useState, useRef } from "react";
 import SideBlock from "./SideBlock";
 import Drawer from "@mui/material/Drawer";
 import { useTokenContext } from "../../../../context/tokenState";
+import axios from "axios";
 
 const Navbar = () => {
   const [search, setSearch] = useState(false);
+  const [searchInput, setSearchInput] = useState<string>("");
   const [isHambar, setIsHambar] = useState(false);
   const inputRef = useRef<any>();
   const { accessToken } = useTokenContext();
   const onClickSearch = () => {
-    setSearch((prev) => !prev);
-    inputRef.current.focus();
+    if (search === false) {
+      setSearch(true);
+      inputRef.current.focus();
+    } else {
+      window.location.replace(`/workSearch?title=${searchInput}`);
+    }
   };
   const onClickHambar = () => {
     setIsHambar((prev) => !prev);
@@ -51,17 +57,16 @@ const Navbar = () => {
               </a>
             </Link>
           </div>
-          <div className="challenge">
-            <Link href="#">
-              <a>
-                <h1>도전 웹드라마</h1>
-              </a>
-            </Link>
-          </div>
         </div>
         <div className="none"></div>
         <div className="etc">
-          <input placeholder="제목" className="input" ref={inputRef} />
+          <input
+            placeholder="제목"
+            className="input"
+            ref={inputRef}
+            value={searchInput}
+            onChange={(e: any) => setSearchInput(e.target.value)}
+          />
           <div className="search" onClick={onClickSearch}>
             <SearchIcon />
           </div>

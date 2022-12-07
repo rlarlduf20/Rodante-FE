@@ -7,13 +7,12 @@ export const HeaderDiv = styled.header<{ ylocation: number }>`
   top: 0;
   left: 0;
   background: ${(props) => props.ylocation > 400 && "white"};
+  border-bottom: ${(props) => props.ylocation > 400 && "1px solid #c4c4c4"};
   height: 84px;
   z-index: 10;
 `;
 
-export const NavbarDiv = styled.nav<{
-  search: boolean;
-}>`
+export const NavbarDiv = styled.nav<{ search: boolean }>`
   max-width: calc(100vw - 100px);
   margin: 0 auto;
   height: 100%;
@@ -35,13 +34,6 @@ export const NavbarDiv = styled.nav<{
     .video_register {
       display: inline-block;
       margin-left: 50px;
-      &:hover {
-        color: #f2ea9c;
-      }
-    }
-    .challenge {
-      display: inline-block;
-      margin-left: 30px;
       &:hover {
         color: #f2ea9c;
       }
@@ -74,7 +66,6 @@ export const NavbarDiv = styled.nav<{
       display: inline-block;
       cursor: pointer;
       background: ${(props) => (props.search ? "white" : "transparent")};
-
       padding: ${(props) => (props.search ? "4.35px 0 4.35px 0" : 0)};
       &:hover {
         background: white;
@@ -83,9 +74,15 @@ export const NavbarDiv = styled.nav<{
     .mypage {
       margin: 0 14px 0 14px;
       cursor: pointer;
+      @media (max-width: 800px) {
+        display: none;
+      }
     }
     .logout {
       cursor: pointer;
+      @media (max-width: 800px) {
+        display: none;
+      }
     }
     .signin {
       color: black;
@@ -183,6 +180,7 @@ export const FooterDiv = styled.footer`
     display: flex;
     justify-content: flex-end;
     .footer_content {
+      margin-top: 15px;
       color: white;
       font-size: 24px;
       @media (max-width: 600px) {

@@ -2,9 +2,10 @@ const Loading = () => {
   return (
     <div
       style={{
-        width: "300px",
+        width: "100vw",
         height: "300px",
         display: "flex",
+        fontSize: "100px",
         justifyContent: "center",
         alignItems: "center",
       }}

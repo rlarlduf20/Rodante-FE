@@ -16,12 +16,13 @@ export const MyPageBox = styled.section`
 
 export const ProfileBox = styled.div<{ img: string }>`
   width: 380px;
-  height: 640px;
+  height: 550px;
   border: 1px solid #c4c4c4;
   padding: 44px 29px;
   background-color: white;
   .title {
     font-size: 24px;
+    margin-top: 20px;
   }
   .image {
     background-repeat: no-repeat;
@@ -30,7 +31,7 @@ export const ProfileBox = styled.div<{ img: string }>`
     height: 200px;
     border-radius: 50%;
     border: 1px solid black;
-    margin: 30px auto 20px;
+    margin: 80px auto 20px;
     background-image: url(${(props) => props.img});
   }
   .nickname {
@@ -53,21 +54,11 @@ export const ProfileBox = styled.div<{ img: string }>`
       border: none;
     }
   }
-  .membership {
-    margin: 100px auto 0;
-    width: 265px;
-    padding: 21px 0;
-    background-color: #f2ea9c;
-    font-size: 32px;
-    color: white;
-    text-align: center;
-    cursor: pointer;
-  }
 `;
 
 export const LockerBox = styled.div<{ type: string }>`
   width: 792px;
-  height: 819px;
+  min-height: 819px;
   border: 1px solid #c4c4c4;
   background-color: white;
   padding: 40px 40px;
@@ -107,7 +98,12 @@ export const WatchVideoCard = styled.div<{ thumbnail: string }>`
     width: 320px;
     height: 209px;
     background-image: url(${(props) => props.thumbnail});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
     margin-bottom: 18px;
+    cursor: pointer;
   }
   p {
     text-align: center;
@@ -127,8 +123,13 @@ export const UploadVideoCard = styled.div<{ thumbnail: string }>`
   .thumbnail {
     width: 320px;
     height: 209px;
-    background-image: url("/images/18img.jpeg");
+    background-image: url(${(props) => props.thumbnail});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
     margin-bottom: 18px;
+    cursor: pointer;
   }
   p {
     text-align: center;

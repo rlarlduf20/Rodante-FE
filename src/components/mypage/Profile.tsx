@@ -8,7 +8,6 @@ const Profile = ({ myInfo }: MyPageProp) => {
       <div className="image"></div>
       <p className="nickname">{myInfo.name}</p>
       <button className="btn">프로필 관리</button>
-      <div className="membership">나의 멤버쉽</div>
     </ProfileBox>
   );
 };
