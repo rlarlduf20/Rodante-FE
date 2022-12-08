@@ -1,8 +1,48 @@
 import styled from "@emotion/styled";
 
-export const NoticeSection = styled.section`
+export const NoticeSection = styled.section<{ uri: string }>`
   width: 100vw;
   height: 42vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(${(props) => props.uri});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  gap: 10px;
+  .img {
+  }
+  h1 {
+    text-align: center;
+  }
+  .status {
+    display: flex;
+    gap: 15px;
+    .st {
+      text-align: center;
+      .item {
+        width: 95px;
+        height: 95px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        background-color: lightgrey;
+        justify-content: center;
+        margin-bottom: 15px;
+        .in {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 65px;
+          height: 65px;
+          border-radius: 50%;
+          background-color: white;
+        }
+      }
+    }
+  }
 `;
 
 export const NoticeBoardBox = styled.div<{
