@@ -28,7 +28,7 @@ export const NoticeSection = styled.section<{ uri: string }>`
         border-radius: 50%;
         display: flex;
         align-items: center;
-        background-color: lightgrey;
+        background-color: #f2ea9c;
         justify-content: center;
         margin-bottom: 15px;
         .in {
@@ -39,6 +39,13 @@ export const NoticeSection = styled.section<{ uri: string }>`
           height: 65px;
           border-radius: 50%;
           background-color: white;
+          .num {
+            font-weight: 700;
+            font-size: 20px;
+          }
+          span {
+            color: #999;
+          }
         }
       }
     }

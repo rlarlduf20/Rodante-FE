@@ -70,13 +70,40 @@
 
 // export default NoticeBoard;
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { NoticeSection } from "../../../styles/mainpage/noticeSection";
 import useScrollCount from "../../../hooks/useScrollCount";
+import axios from "axios";
+import Loading from "../../common/etc/Loading";
 
 const NoticeBoard = () => {
+  const [totalUser, setTotalUser] = useState<number>(0);
+  const [totalWork, setTotalWork] = useState<number>(0);
+  const [totalVideo, setTotalVideo] = useState<number>(0);
+
+  const getStat = async () => {
+    try {
+      const res = await axios.get("http://localhost:8080/main");
+      console.log(typeof res.data.userCount);
+      setTotalUser(res.data.userCount);
+      setTotalWork(res.data.workCount);
+      setTotalVideo(res.data.videoCount);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  useEffect(() => {
+    getStat();
+  }, []);
+  useEffect(() => {
+    console.log("user", totalUser);
+    console.log("work", totalWork);
+    console.log("video", totalVideo);
+  }, [totalUser, totalVideo, totalWork]);
+
   return (
-    <NoticeSection uri={"/images/bgbg.jpeg"}>
+    <NoticeSection uri={"/images/bgbg.png"}>
       <div className="img">
         <Image
           src={"/images/danthe.png"}
@@ -90,7 +117,7 @@ const NoticeBoard = () => {
         <div className="st">
           <div className="item">
             <div className="in">
-              <h1 {...useScrollCount(17, 1, 1000)} />
+              <div className="num" {...useScrollCount(totalWork, 1, 1000)} />
               <span>개</span>
             </div>
           </div>
@@ -99,8 +126,8 @@ const NoticeBoard = () => {
         <div className="st">
           <div className="item">
             <div className="in">
-              <h1 {...useScrollCount(12, 1, 1000)} />
-              <span>개</span>
+              <div className="num" {...useScrollCount(totalUser, 1, 1000)} />
+              <span>명</span>
             </div>
           </div>
           <p>유저</p>
@@ -108,7 +135,7 @@ const NoticeBoard = () => {
         <div className="st">
           <div className="item">
             <div className="in">
-              <h1 {...useScrollCount(48, 1, 1000)} />
+              <div className="num" {...useScrollCount(totalVideo, 1, 1000)} />
               <span>개</span>
             </div>
           </div>
